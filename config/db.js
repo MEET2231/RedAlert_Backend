@@ -1,6 +1,7 @@
 const mysql = require("mysql2");
 require("dotenv").config();
-// const fs = require('fs');
+const fs = require('fs');
+
 
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
@@ -10,7 +11,7 @@ const pool = mysql.createPool({
   port: process.env.DB_PORT,
   waitForConnections: true,
   ssl: {
-    rejectUnauthorized: true,
+    ca: fs.readFileSync('./certs/ca.pem') // Load Aiven's CA certificate
   }
 });
 
