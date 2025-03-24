@@ -1,5 +1,5 @@
 const mysql = require("mysql2");
-require("dotenv").config();
+require("/etc/secrets/dotenv").config();
 const fs = require('fs');
 
 const pool = mysql.createPool({
